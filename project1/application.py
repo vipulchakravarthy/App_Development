@@ -29,5 +29,6 @@ def index():
 def register():
     if request.method == "POST":
         print(request.form.get("email"))
+        return render_template('success.html', text =request.form.get("email"))
 
     return render_template('register.html')
