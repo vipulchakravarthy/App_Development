@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block body %}
-        <h1>Names</h1>
-        
-        <a href="{{ url_for('more') }}">More info</a>
+<form action="{{ url_for('hello') }}" method="post">
+    <input type="text" name="name" placeholder="Enter Your Name">
+    <button>Submit</button>
+<form>
 
 {% endblock %} 
