@@ -5,6 +5,10 @@
     </head>
 
     <body>
-        <h2>Hello {{Name}}!!!!</h2>
+        {% if new_year %}
+            <h1>Yes!! Its New Year</h1>
+        {% else %}
+            <h1>No</h1>
+        {% endif %}
     </body>
 </html>
