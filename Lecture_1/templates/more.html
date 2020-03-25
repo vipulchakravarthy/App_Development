@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
+{% extends "layout.html" %}
 
-    </head>
+{% block heading %}
+    Second page
+{% endblock %}
 
-    <body>
-        <h1>More info</h1>
+{% block body %}
+    <h1>More info</h1>
 
-        <a href="{{ url_for('index')}}">Back to Home</a>
-    </body>
-</html>
+    <a href="{{ url_for('index')}}">Back to Home</a>
+
+{% endblock %} 

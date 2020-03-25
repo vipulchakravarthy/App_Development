@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>My Website</title>
-    </head>
+{% extends "layout.html" %}
 
-    <body>
+{% block heading %}
+    First page
+{% endblock %}
+
+{% block body %}
         <h1>Names</h1>
         
         <a href="{{ url_for('more') }}">More info</a>
-    </body>
-</html>
+
+{% endblock %} 
