@@ -20,7 +20,8 @@ class User(db.Model):
                         unique=False,
                         nullable=False)
 
-    def __init__(self, username, email, password) :
+    def __init__(self, username, email, password, created) :
         self.username = username
         self.email = email
         self.password = password
+        self.created = created
