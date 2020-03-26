@@ -42,3 +42,9 @@ def register():
         return render_template('success.html', text =register_message)
 
     return render_template('register.html')
+
+
+@app.route("/admin", methods=["GET"])
+def fetch_users():
+    data=db.execute("SELECT * FROM users").fetchall()
+    return render_template('users.html', data=data)

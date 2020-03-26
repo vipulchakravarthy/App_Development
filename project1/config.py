@@ -1,18 +1,24 @@
 import os
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
+from flask import Flask, render_template, request
 
-if not os.getenv("DATABASE_URL"):
-    raise RuntimeError("DATABASE_URL is not set")
+# Import table definitions.
+from models import *
 
-engine= create_engine(os.getenv("DATABASE_URL"))
-db =scoped_session(sessionmaker(bind=engine))
+app = Flask(__name__)
+
+# Tell Flask what SQLAlchemy databas to use.
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+# Link the Flask app with the database (no Flask app is actually being run yet).
+db.init_app(app)
 
 def main():
-    db.execute("CREATE TABLE users (id SERIAL PRIMARY KEY, email VARCHAR NOT NULL, password VARCHAR NOT NULL)")
-    db.commit()
-
+  # Create tables based on each table definition in `models`
+  db.create_all()
 
 if __name__ == "__main__":
-    main()
+  # Allows for command line interaction with Flask application
+  with app.app_context():
+      main()
