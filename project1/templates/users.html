@@ -5,10 +5,10 @@
             <table class="table">
                 {% for item in data %}
                 <tr>
-                    <td>{{item[0]}}</td>
-                    <td>{{item[1]}}</td>
-                    <td>{{item[2]}}</td>
-                    <td>{{item[3]}}</td>
+                    <td>{{item.id}}</td>
+                    <td>{{item.username}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.created}}</td>
                 </tr>
                 {% endfor %}
             </table>

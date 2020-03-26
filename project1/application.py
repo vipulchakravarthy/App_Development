@@ -38,5 +38,6 @@ def register():
 
 @app.route("/admin", methods=["GET"])
 def fetch_users():
-    data=db.execute("SELECT * FROM users").fetchall()
+    data = User.query.all()
+    print(data)
     return render_template('users.html', data=data)
