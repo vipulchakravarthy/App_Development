@@ -27,8 +27,18 @@ def index():
 
 @app.route("/register",methods=["GET","POST"])
 def register():
+    register_message =""
     if request.method == "POST":
-        print(request.form.get("email"))
-        return render_template('success.html', text =request.form.get("email"))
+        email=request.form.get('email') 
+        userPassword=request.form.get('password')
+        data=db.execute("SELECT email FROM users").fetchall()
+        for i in range(len(data)):
+            if data[i]["email"]==email:
+                register_message="email already exist"
+                return render_template('success.html',text=register_message)
+        db.execute("INSERT INTO users (email,password) VALUES (:a,:b)",{"a":email,"b":userPassword})
+        db.commit()
+        register_message="Success! You can log in now."
+        return render_template('success.html', text =register_message)
 
     return render_template('register.html')
