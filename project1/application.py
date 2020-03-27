@@ -38,6 +38,16 @@ def register():
         
     return render_template('register.html')
 
+@app.route("/auth", methods=["POST"])
+def authentication():
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    data = User.query.filter_by(email=email)
+    if data[0].email == email and data[0].password == password:
+        return render_template("home.html", text="Welcome to Book Reviews")
+
+    return render_template("register.html", text="email or password is incorrect")
 
 @app.route("/admin", methods=["GET"])
 def fetch_users():
