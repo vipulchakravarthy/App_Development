@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-
+from datetime import datetime as dt
 db = SQLAlchemy()
 
 class User(db.Model):
@@ -20,11 +20,11 @@ class User(db.Model):
                         unique=False,
                         nullable=False)
 
-    def __init__(self, username, email, password, created) :
+    def __init__(self, username, email, password) :
         self.username = username
         self.email = email
         self.password = password
-        self.created = created
+        self.created = dt.now()
 
     def __repr__(self):
         return self.email
