@@ -1,5 +1,8 @@
-import os
-
+'''
+This file is to setup the db
+and load the books.csv to db
+'''
+import os, csv
 from flask import Flask, render_template, request
 
 # Import table definitions.
@@ -15,8 +18,18 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 
 def main():
-  # Create tables based on each table definition in `models`
-  db.create_all()
+
+    # Create tables based on each table definition in `models`
+    db.create_all()
+
+    with open("books.csv", 'r') as f:
+        reader = csv.reader(f)
+        next(reader)
+
+        for row in reader:
+            new_book = Book(row[0], row[1], row[2], int(row[3]))
+            db.session.add(new_book)
+    db.session.commit()
 
 if __name__ == "__main__":
   # Allows for command line interaction with Flask application
