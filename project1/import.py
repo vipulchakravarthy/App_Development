@@ -1,7 +1,10 @@
+<<<<<<< HEAD:project1/import.py
 '''
 This file is to setup the db
 and load the books.csv to db
 '''
+=======
+>>>>>>> Authentication:project1/config.py
 import os, csv
 from flask import Flask, render_template, request
 

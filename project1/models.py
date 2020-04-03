@@ -37,9 +37,14 @@ class User(db.Model):
     def __repr__(self):
         return self.email
 
+<<<<<<< HEAD
 '''
 Class for storing book details
 '''
+=======
+
+
+>>>>>>> Authentication
 class Book(db.Model):
     __tablename__ = "books"
     id = db.Column(db.Integer,
